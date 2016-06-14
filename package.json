@@ -10,5 +10,10 @@
 	"bugs":        "https://github.com/derhuerst/vbb-entrances/issues",
 	"repository":  "derhuerst/vbb-entrances",
 	"license":     "ISC",
-	"engines" :    {"node": ">=4"}
+	"engines" :    {"node": ">=4"},
+	"scripts": {
+		"download": "./download",
+		"parse":    "node parse.js",
+		"build":    "npm run download; npm run parse"
+	}
 }

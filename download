@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -o berlin.xlsx 'https://offenedaten.de/dataset/a29a9a02-1fe8-4cd7-ba8f-1581aef7ebd7/resource/61ca1bf1-e674-4920-9557-943d4a464b12/download/bahnho-fe-mit-zugangskoordinaten-berlin.xlsx'
+curl -o brandenburg.xlsx 'https://offenedaten.de/dataset/a29a9a02-1fe8-4cd7-ba8f-1581aef7ebd7/resource/47fb9b75-dcd3-409e-b524-f886bb2043ef/download/bahnho-fe-mit-zugangskoordinaten-brandenburg.xlsx'
