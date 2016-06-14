@@ -15,8 +15,9 @@
 		"xlsx-rows": "^1"
 	},
 	"scripts": {
-		"download": "./download",
-		"parse":    "node parse.js",
-		"build":    "npm run download; npm run parse"
+		"download":   "./download",
+		"parse":      "node parse.js",
+		"build":      "npm run download; npm run parse",
+		"prepublish": "npm run build"
 	}
 }
