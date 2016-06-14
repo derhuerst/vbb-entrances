@@ -1,0 +1,14 @@
+{
+	"name":        "vbb-entrances",
+	"description": "Entrances for VBB stations.",
+	"version":     "0.1.0",
+	"main":        "index.js",
+	"files":       ["index.js", "data.json"],
+	"keywords":    ["vbb", "stations", "entrances"],
+	"author":      "Jannis R <mail@jannisr.de>",
+	"homepage":    "https://github.com/derhuerst/vbb-entrances",
+	"bugs":        "https://github.com/derhuerst/vbb-entrances/issues",
+	"repository":  "derhuerst/vbb-entrances",
+	"license":     "ISC",
+	"engines" :    {"node": ">=4"}
+}
