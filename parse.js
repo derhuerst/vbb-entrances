@@ -1,6 +1,7 @@
 'use strict'
 
 const xlsx = require('xlsx-rows')
+const toWGS84 = require('gauss-krueger').gk2wgs
 const fs = require('fs')
 
 
@@ -17,14 +18,18 @@ const columns = {
 const convert = (city) => {
 	const rows = xlsx(city + '.xlsx')
 	.slice(2)
-	.map((row) => ({
-		  id:    row[7] ? parseInt(row[7]) : null
-		, type:  row[0]
-		, name:  row[2]
-		, level: row[3] ? parseInt(row[3]) : null
-		, east:  row[4] ? parseInt(row[4]) : null
-		, north: row[5] ? parseInt(row[5]) : null
-	}))
+	.filter((row) => row[4] && row[5])
+	.map((row) => {
+		const pos = toWGS84(parseInt(row[4]), parseInt(row[5]))
+		return {
+			  id:    row[7] ? parseInt(row[7]) : null
+			, type:  row[0]
+			, name:  row[2]
+			, level: row[3] ? parseInt(row[3]) : null
+			, latitude:  +pos[0].toString().substr(0, 9)
+			, longitude: +pos[1].toString().substr(0, 9)
+		}
+	})
 
 	let id
 	for (let row of rows) {

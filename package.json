@@ -12,7 +12,8 @@
 	"license":     "ISC",
 	"engines" :    {"node": ">=4"},
 	"devDependencies": {
-		"xlsx-rows": "^1"
+		"xlsx-rows": "^1",
+		"guass-krueger": "juliuste/gauss-krueger#v0.1"
 	},
 	"scripts": {
 		"download":   "./download",
