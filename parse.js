@@ -20,14 +20,14 @@ const convert = (city) => {
 	.slice(2)
 	.filter((row) => row[4] && row[5])
 	.map((row) => {
-		const pos = toWGS84(parseInt(row[4]), parseInt(row[5]))
+		const pos = toWGS84({x: parseInt(row[4]), y: parseInt(row[5])})
 		return {
 			  id:    row[7] ? parseInt(row[7]) : null
 			, type:  row[0]
 			, name:  row[2]
 			, level: row[3] ? parseInt(row[3]) : null
-			, latitude:  +pos[0].toString().substr(0, 9)
-			, longitude: +pos[1].toString().substr(0, 9)
+			, latitude:  +pos.lat.toString().substr(0, 9)
+			, longitude: +pos.lon.toString().substr(0, 9)
 		}
 	})
 

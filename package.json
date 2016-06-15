@@ -13,7 +13,7 @@
 	"engines" :    {"node": ">=4"},
 	"devDependencies": {
 		"xlsx-rows": "^1",
-		"gauss-krueger": "^0.1"
+		"gauss-krueger": "^0.2"
 	},
 	"scripts": {
 		"download":   "./download",
