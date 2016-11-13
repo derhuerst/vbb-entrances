@@ -10,7 +10,7 @@
 	"bugs":        "https://github.com/derhuerst/vbb-entrances/issues",
 	"repository":  "derhuerst/vbb-entrances",
 	"license":     "ISC",
-	"engines" :    {"node": ">=4"},
+	"engines" :    {"node": ">=6"},
 	"devDependencies": {
 		"xlsx-rows": "^1",
 		"gauss-krueger": "^0.2"
