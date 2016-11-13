@@ -2,8 +2,8 @@
 	"name":        "vbb-entrances",
 	"description": "Entrances for VBB stations.",
 	"version":     "0.1.0",
-	"main":        "index.js",
-	"files":       ["index.js", "data.json"],
+	"main":        "data.json",
+	"files":       ["data.json"],
 	"keywords":    ["vbb", "stations", "entrances"],
 	"author":      "Jannis R <mail@jannisr.de>",
 	"homepage":    "https://github.com/derhuerst/vbb-entrances",
@@ -18,7 +18,7 @@
 	"scripts": {
 		"download":   "./download",
 		"parse":      "node parse.js",
-		"build":      "npm run download; npm run parse",
+		"build":      "npm run download && npm run parse",
 		"prepublish": "npm run build"
 	}
 }
