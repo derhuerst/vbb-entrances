@@ -1,46 +1,37 @@
 'use strict'
 
-const xlsx = require('xlsx-rows')
-const toWGS84 = require('gauss-krueger').gk2wgs
-const fs = require('fs')
+const csv = require('csv-parser')
+const through = require('through2')
+const sink = require('stream-sink')
 
 
 
-const columns = {
-	id:    7,
-	type:  0,
-	name:  2,
-	level: 3,
-	east:  4,
-	north: 5
-}
-
-const convert = (city) => {
-	const rows = xlsx(city + '.xlsx')
-	.slice(2)
-	.filter((row) => row[4] && row[5])
-	.map((row) => {
-		const pos = toWGS84({x: parseInt(row[4]), y: parseInt(row[5])})
-		return {
-			  id:    row[7] ? parseInt(row[7]) : null
-			, type:  row[0]
-			, name:  row[2]
-			, level: row[3] ? parseInt(row[3]) : null
-			, latitude:  +pos.lat.toString().substr(0, 9)
-			, longitude: +pos.lon.toString().substr(0, 9)
-		}
+const parseRow = (row, _, cb) => {
+	cb(null, {
+		  id: row[headers[7]] || row[headers[6]] || null
+		, type: row[headers[1]]
+		, name: row[headers[0]]
+		, level: row[headers[3]] ? parseInt(row[headers[3]]) : null
+		, latitude: parseFloat(row[headers[5]].replace(',', '.'))
+		, longitude: parseFloat(row[headers[4]].replace(',', '.'))
 	})
-
-	let id
-	for (let row of rows) {
-		if (row.type.trim().toLowerCase() === 'bauwerk' && row.id) id = row.id
-		else row.id = id
-	}
-
-	return rows
 }
 
 
+const parser = csv({separator: ';'})
+let headers = []
+parser.on('headers', (h) => {
+	headers = h
+})
 
-fs.writeFileSync('data.json', JSON.stringify(
-	convert('berlin').concat(convert('brandenburg'))))
+process.stdin
+.pipe(parser)
+.pipe(through.obj(parseRow))
+.pipe(sink('object'))
+.then((data) => {
+	process.stdout.write(JSON.stringify(data) + '\n')
+})
+.catch((err) => {
+	console.error(err)
+	process.exit(1)
+})
