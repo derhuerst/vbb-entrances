@@ -12,8 +12,9 @@
 	"license":     "ISC",
 	"engines" :    {"node": ">=6"},
 	"devDependencies": {
-		"xlsx-rows": "^1",
-		"gauss-krueger": "^0.2"
+		"csv-parser": "^1.11.0",
+		"through2": "^2.0.3",
+		"stream-sink": "^2.0.0"
 	},
 	"scripts": {
 		"download":   "./download",

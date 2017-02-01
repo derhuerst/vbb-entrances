@@ -1,8 +1,6 @@
 # *vbb-entrances* ⏱
 
-**Entrances for VBB stations.**
-
-This module contains [old data from 2015](https://offenedaten.de/dataset/zugangskoordinaten-nahverkehr-berlin). It exists to prove that this kind of data is useful.
+**Entrances for VBB stations**, computed from [open data](http://www.vbb.de/de/article/fahrplan/webservices/datensaetze/1186967.html).
 
 [![npm version](https://img.shields.io/npm/v/vbb-entrances.svg)](https://www.npmjs.com/package/vbb-entrances)
 [![build status](https://img.shields.io/travis/derhuerst/vbb-entrances.svg)](https://travis-ci.org/derhuerst/vbb-entrances)
@@ -24,12 +22,12 @@ npm install vbb-entrances
 ```js
 const entries = require('vbb-entrances/data.json')
 
-entries.find((entry) => entry.id === 9009202) // U Osloer Str.
+entries.find((entry) => entry.id === '900000009202') // U Osloer Str.
 ```
 
 ```js
 {
-	id: 9009202,
+	id: '900000009202',
 	type: 'Bauwerk',
 	name: 'U Osloer Straße',
 	level: null,
@@ -44,3 +42,8 @@ Use [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids) if you
 ## Contributing
 
 If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/derhuerst/vbb-entrances/issues).
+
+
+## License
+
+The data is licensed [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) *Verkerhsverbund Berlin-Brandenburg GmbH*.
