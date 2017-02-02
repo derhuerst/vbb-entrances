@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"download":   "./download",
-		"parse":      "iconv -f 437 -t utf8 data.csv | node parse.js > data.json",
+		"parse":      "cat data.csv | node parse.js > data.json",
 		"build":      "npm run download && npm run parse",
 		"prepublish": "npm run build"
 	}
