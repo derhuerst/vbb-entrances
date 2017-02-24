@@ -1,6 +1,6 @@
 # *vbb-entrances* ⏱
 
-**Entrances for VBB stations**, computed from [open data](http://www.vbb.de/de/article/fahrplan/webservices/datensaetze/1186967.html).
+**Entrances for VBB stations**, computed from [open data](https://daten.berlin.de/datensaetze/koordinaten-der-zugangsmöglichkeiten-zu-stationen).
 
 [![npm version](https://img.shields.io/npm/v/vbb-entrances.svg)](https://www.npmjs.com/package/vbb-entrances)
 [![build status](https://img.shields.io/travis/derhuerst/vbb-entrances.svg)](https://travis-ci.org/derhuerst/vbb-entrances)

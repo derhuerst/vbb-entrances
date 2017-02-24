@@ -1,3 +1,3 @@
 #!/bin/bash
 
-curl -L -o data.csv 'http://www.vbb.de/de/download/UMBW.csv'
+curl -L -o data.csv 'http://www.vbb.de/de/download/VBB_Haltestellendaten.csv'
