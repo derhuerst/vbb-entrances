@@ -1,3 +1,6 @@
 #!/bin/bash
+set -e
 
-curl -L -o data.csv 'http://www.vbb.de/de/download/VBB_Haltestellendaten.csv'
+curl -s -L 'https://www.vbb.de/media/download/2035' >data.zip
+unzip -q -o -d . -j data.zip UMBW.csv
+ls -lh UMBW.csv
