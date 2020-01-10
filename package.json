@@ -1,7 +1,7 @@
 {
 	"name":        "vbb-entrances",
 	"description": "Entrances for VBB stations.",
-	"version":     "0.2.0",
+	"version":     "0.2.1",
 	"main":        "data.json",
 	"files":       ["data.json"],
 	"keywords":    ["vbb", "stations", "entrances"],
