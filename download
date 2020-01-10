@@ -2,5 +2,5 @@
 set -e
 
 curl -s -L 'https://www.vbb.de/media/download/2035' >data.zip
-unzip -q -o -d . -j data.zip UMBW.csv
-ls -lh UMBW.csv
+unzip -q -o -d . -j data.zip UMBW.CSV
+ls -lh UMBW.CSV

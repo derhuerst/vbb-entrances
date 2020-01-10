@@ -4,28 +4,31 @@ const csv = require('csv-parser')
 const through = require('through2')
 const sink = require('stream-sink')
 
-
+const columns = Object.assign(Object.create(null), {
+})
 
 const parseRow = (row, _, cb) => {
 	cb(null, {
-		  id: row[headers[7]] || row[headers[6]] || null
-		, type: row[headers[1]]
-		, name: row[headers[0]]
-		, level: row[headers[3]] ? parseInt(row[headers[3]]) : null
-		, latitude: parseFloat(row[headers[5]].replace(',', '.'))
-		, longitude: parseFloat(row[headers[4]].replace(',', '.'))
+		// todo: expose `Bauwerk Name` as `buildingName`
+		// todo: make use or or expose `Bauwerkselement Nummer`
+		// todo: make use of or expose `Bauwerksreferenzort Nummer`
+		  id: row['Bauwerkselement Exportnummer'] || null
+		, type: row['Bauwerkselement Typ'] || null
+		, name: row['Bauwerkselement Name'] || null
+		, level: row['Bauwerkselement Niveau']
+			? parseInt(row['Bauwerkselement Niveau'])
+			: null
+		, latitude: row['X-Koordinate']
+			? parseFloat(row['X-Koordinate'].replace(',', '.'))
+			: null
+		, longitude: row['Y-Koordinate']
+			? parseFloat(row['Y-Koordinate'].replace(',', '.'))
+			: null
 	})
 }
 
-
-const parser = csv({separator: ';'})
-let headers = []
-parser.on('headers', (h) => {
-	headers = h
-})
-
 process.stdin
-.pipe(parser)
+.pipe(csv({separator: ';'}))
 .pipe(through.obj(parseRow))
 .pipe(sink('object'))
 .then((data) => {
